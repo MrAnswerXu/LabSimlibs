@@ -4,33 +4,37 @@ if channel==1
     % 垂直直线运动
     xlim=randi([0,100],1)*ones(1,2)/100;
     ylim=randi([0,30],1)*ones(1,2)/100+[0,randi([60,70],1)/100];
-    disp(['Vline',xlim,ylim]);
+%     disp(['Vline',xlim,ylim]);
     config_Curve.xlim=xlim;
     config_Curve.ylim=ylim;
     config_Curve.shape='line';
     config_Curve.n=n;
     [x,y]=GenTrace(config_Curve);
-    x=[x, fliplr(x)];
-    y=[y, fliplr(y)];
+    if config.flag_flip==1
+        x=[x, fliplr(x)];
+        y=[y, fliplr(y)];
+    end
 elseif channel==2
     % 水平直线运动
     ylim=randi([0,100],1)*ones(1,2)/100;
     xlim=randi([0,30],1)*ones(1,2)/100+[0,randi([60,70],1)/100];
-    disp(['Hline',xlim,ylim]);
+%     disp(['Hline',xlim,ylim]);
     config_Curve.xlim=xlim;
     config_Curve.ylim=ylim;
     config_Curve.shape='line';
     config_Curve.n=n;
     [x,y]=GenTrace(config_Curve);
-    x=[x, fliplr(x)];
-    y=[y, fliplr(y)];   
+    if config.flag_flip==1
+        x=[x, fliplr(x)];
+        y=[y, fliplr(y)];   
+    end 
 elseif channel==3
     % 圆
     config_Curve.center=randi([20,80],1,2)/100;
     maxV=min(40,floor(min(config_Curve.center)*100));
-    disp(maxV)
+%     disp(maxV)
     config_Curve.radius=randi([20,maxV])/100;
-    disp(['circle',config_Curve.center,config_Curve.radius])
+%     disp(['circle',config_Curve.center,config_Curve.radius])
     config_Curve.shape='circle';
     config_Curve.n=n;
     [x,y]=GenTrace(config_Curve);

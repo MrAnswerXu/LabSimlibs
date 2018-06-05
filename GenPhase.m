@@ -25,7 +25,7 @@ n_sf=n;
 len=100;
 abs_motion=zeros(1,n);
 for i=len:n_sf
-    vars(i-len/2)=var(absa(i-len+1:i)/max(absa(i-len+1:i)));
+    vars(i-len/2)=varfunc(absa(i-len+1:i)/max(absa(i-len+1:i)));
     abs_motion(i-len/2)=vars(i-len/2)>=absThreshold;
 end
 % vars_real=vars(len/2:n_sf-len/2);
